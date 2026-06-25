@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getModules, getExercises } from "@/lib/content";
 import ProgressStats from "@/components/ProgressStats";
+import HeroAnimation from "@/components/HeroAnimation";
 
 export default function HomePage() {
   const modules = getModules();
@@ -10,30 +11,19 @@ export default function HomePage() {
     <div className="relative">
       {/* Glow de fond hero */}
       <div className="pointer-events-none absolute inset-0 flex justify-center overflow-hidden">
-        <div className="h-[600px] w-[900px] rounded-full bg-indigo-500/10 blur-[120px] -translate-y-1/4 dark:bg-indigo-600/20" />
+        <div className="h-[600px] w-[900px] rounded-full bg-indigo-500/15 blur-[120px] -translate-y-1/4 dark:bg-indigo-600/20" />
       </div>
 
       <div className="relative mx-auto max-w-4xl px-6">
         {/* Hero */}
         <section className="py-28 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-100 bg-white px-4 py-1.5 text-xs text-zinc-500 mb-8 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-zinc-400">
+          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-100 bg-white px-4 py-1.5 text-xs text-zinc-500 mb-12 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-zinc-400">
             <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
             7 modules · 7 exercices · 100% gratuit
           </div>
 
-          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-tight">
-            <span className="bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-transparent dark:from-white dark:to-zinc-400">
-              Apprends à builder
-              <br />
-              avec l'IA
-            </span>
-          </h1>
-
-          <p className="mt-6 text-lg text-zinc-500 max-w-2xl mx-auto leading-relaxed dark:text-zinc-400">
-            Le vibecoding a ouvert le développement logiciel à tout le monde.
-            Cette plateforme t'apprend à construire l'application que tu veux —
-            sans jamais avoir écrit une ligne de code.
-          </p>
+          {/* Animation plume + titre */}
+          <HeroAnimation />
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
