@@ -1,0 +1,126 @@
+---
+title: "Structurer un bon prompt"
+description: "La qualité de ce que tu obtiens dépend directement de la qualité de ce que tu demandes. Voici la méthode."
+order: 4
+---
+
+## Le prompt, c'est ton outil principal
+
+En vibecoding, tu ne codes pas — tu prompts. La qualité de ton résultat dépend presque entièrement de la qualité de ce que tu demandes.
+
+Un bon prompt n'est pas forcément long. C'est un prompt **précis, contextualisé, et actionnable**.
+
+---
+
+## Les 5 éléments d'un bon prompt
+
+### 1. Le contexte
+
+Dis à l'IA **dans quel projet tu travailles** et ce qui existe déjà. Elle n'a pas de mémoire entre les sessions (sauf si tu utilises un outil comme Cursor qui charge ton code automatiquement).
+
+> ❌ "Ajoute un formulaire de connexion."
+> ✅ "Je construis une app Next.js de suivi de dépenses. Il n'y a pas encore d'authentification. Ajoute un formulaire de connexion avec email et mot de passe."
+
+### 2. La tâche précise
+
+Décris **ce que tu veux obtenir**, pas comment tu penses qu'il faut le faire. L'IA sait comment faire — c'est toi qui sais quoi.
+
+> ❌ "Fais un bouton bleu qui ouvre une modal."
+> ✅ "Ajoute un bouton 'Ajouter une dépense' en haut à droite de la page. Quand l'utilisateur clique dessus, ouvre un formulaire modal avec les champs : montant (nombre), catégorie (liste déroulante), date, note optionnelle."
+
+### 3. Les contraintes
+
+Précise les règles que le résultat doit respecter : stack technique, style, comportement attendu.
+
+> "Utilise Tailwind CSS pour le style. Le formulaire doit être responsive. La modal doit se fermer quand on clique en dehors."
+
+### 4. Le format attendu
+
+Si tu veux un résultat dans un format particulier, dis-le.
+
+> "Donne-moi uniquement le code du composant React, sans les imports si tu les as déjà listés avant."
+
+### 5. Un exemple si possible
+
+Un exemple vaut mille mots. Si tu peux montrer ce que tu veux (même approximativement), fais-le.
+
+> "Le résultat doit ressembler à ça : [description ou croquis]"
+
+---
+
+## La structure CRAFT
+
+Un framework mnémotechnique pour les prompts complexes :
+
+- **C**ontexte — où on en est
+- **R**ôle — qui doit répondre ("Tu es un développeur Next.js senior...")
+- **A**ction — ce qu'on veut
+- **F**ormat — comment présenter le résultat
+- **T**on — le niveau de détail attendu
+
+Tu n'as pas à utiliser tous ces éléments à chaque fois. Mais si un prompt ne donne pas ce que tu veux, demande-toi lequel manque.
+
+---
+
+## Les erreurs classiques de prompt
+
+### Trop vague
+> ❌ "Améliore mon app."
+
+L'IA ne sait pas ce que tu veux améliorer. Sois précis.
+
+### Trop long et trop de choses à la fois
+> ❌ "Crée une app complète avec authentification, gestion des dépenses, graphiques, export PDF, mode sombre, notifications push et une version mobile."
+
+Découpe. Un bon prompt = une tâche à la fois.
+
+### Oublier le contexte technique
+> ❌ "Ajoute une base de données."
+
+Quelle base de données ? Tu utilises quoi comme framework ? Quel provider cloud ?
+
+> ✅ "J'utilise Next.js. Ajoute Supabase comme base de données. Crée une table `expenses` avec les colonnes : id, amount (number), category (text), date (date), note (text, nullable), user_id (uuid)."
+
+### Ne pas dire ce qui ne va pas
+Si tu relances parce que le résultat est mauvais, dis **pourquoi**.
+
+> ❌ "Non, recommence."
+> ✅ "Le formulaire s'affiche bien, mais quand je clique sur 'Soumettre', rien ne se passe. Il doit appeler l'API `/api/expenses` avec une requête POST et les données du formulaire."
+
+---
+
+## Exemple complet : un bon premier prompt
+
+Voici un exemple de prompt de qualité pour lancer un projet depuis zéro :
+
+```
+Je veux construire une app web de suivi de dépenses personnelles.
+
+Stack : Next.js (App Router), Tailwind CSS, Supabase pour la base de données.
+
+Fonctionnalités MVP :
+1. Ajouter une dépense (montant, catégorie parmi : alimentation, transport, loisirs, santé, autre ; date, note optionnelle)
+2. Lister toutes les dépenses, de la plus récente à la plus ancienne
+3. Voir le total par catégorie pour le mois en cours
+4. Supprimer une dépense
+
+Pas d'authentification pour l'instant — toutes les dépenses appartiennent à un seul utilisateur local.
+
+Commence par me proposer la structure des fichiers et la définition du schéma Supabase.
+Ne génère pas encore de code — je veux valider la structure d'abord.
+```
+
+Tu remarques : contexte, stack, fonctionnalités précises, hors-scope explicite, et une instruction sur ce que tu veux en premier (pas tout d'un coup).
+
+---
+
+## Récapitulatif
+
+Un bon prompt :
+- Donne le contexte du projet
+- Décrit une seule tâche précise
+- Précise les contraintes techniques
+- Montre un exemple si possible
+- Dit ce qui ne va pas (pour les corrections)
+
+Commence petit, valide, puis demande la suite. C'est ça, le vrai workflow du vibecoding.

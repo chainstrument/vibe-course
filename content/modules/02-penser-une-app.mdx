@@ -1,0 +1,117 @@
+---
+title: "Penser une app avant de la builder"
+description: "La première chose à faire avant d'ouvrir une IA, c'est de penser. On t'apprend comment."
+order: 2
+---
+
+## L'erreur la plus commune
+
+La plupart des débutants ouvrent leur IA et écrivent quelque chose comme :
+
+> *"Crée-moi une app pour gérer mes finances."*
+
+Le résultat est décevant. L'IA produit quelque chose, mais ce n'est jamais vraiment ce qu'on voulait. Alors on reformule, on relance, on tourne en rond.
+
+Le problème n'est pas l'IA. C'est la question.
+
+---
+
+## Avant de parler à l'IA, parle à toi-même
+
+Construire une app commence par répondre à trois questions fondamentales :
+
+**1. Quel problème est-ce que je résous ?**
+Pas "quelle app je veux", mais quel problème concret cette app va résoudre pour quelqu'un. Si tu ne peux pas répondre à ça en une phrase, tu n't es pas prêt.
+
+**2. Qui va l'utiliser ?**
+Toi seul ? Ta famille ? Des inconnus ? La réponse change tout : l'interface, la complexité, la sécurité nécessaire.
+
+**3. Qu'est-ce que l'utilisateur doit pouvoir FAIRE ?**
+Liste les actions concrètes. Pas des fonctionnalités abstraites — des actions. "L'utilisateur peut ajouter une dépense", "L'utilisateur voit son solde", "L'utilisateur supprime une entrée".
+
+---
+
+## La méthode des fonctionnalités
+
+Prends ton idée d'app et décompose-la en **fonctionnalités** — des capacités concrètes que l'app doit avoir.
+
+### Exemple : une app de suivi des dépenses
+
+❌ Description vague :
+> Une app pour gérer mes finances.
+
+✅ Liste de fonctionnalités :
+- Ajouter une dépense avec un montant, une catégorie et une date
+- Voir la liste de toutes mes dépenses
+- Filtrer par catégorie ou par mois
+- Voir le total dépensé par catégorie
+- Supprimer une dépense
+
+Tu vois la différence ? La deuxième version donne à l'IA des instructions précises. Elle sait exactement quoi construire.
+
+---
+
+## Penser en écrans
+
+Une autre technique utile : **pense en écrans**.
+
+Demande-toi : si j'ouvre l'app, qu'est-ce que je vois ? Si je clique sur ce bouton, que se passe-t-il ? Quels écrans existent ?
+
+Pour l'app de dépenses :
+- **Écran principal** : liste des dépenses récentes + total du mois
+- **Formulaire** : ajouter une nouvelle dépense
+- **Détail** : voir et modifier une dépense existante
+
+Ce découpage en écrans est exactement ce qu'un vrai product designer fait. Et ça aide énormément à structurer tes prompts par la suite.
+
+---
+
+## Ce qui est dans le MVP, ce qui ne l'est pas
+
+**MVP** = Minimum Viable Product. La version la plus simple possible qui soit quand même utile.
+
+La règle d'or : **commence toujours petit**.
+
+Pour l'app de dépenses, le MVP c'est peut-être juste :
+- Ajouter une dépense
+- Voir la liste
+- Supprimer une dépense
+
+Pas de filtres. Pas de graphiques. Pas de catégories. Ça viendra après.
+
+Pourquoi ? Parce que plus ton scope initial est grand, plus les risques d'erreur s'accumulent. Une IA qui génère 3 fonctionnalités simples fait moins d'erreurs qu'une IA qui en génère 15 complexes d'un coup.
+
+---
+
+## Le document de définition
+
+Avant de lancer ton premier prompt, écris un mini-document. Pas besoin d'être long — quelques lignes suffisent.
+
+```
+Nom : Suivi dépenses
+Problème : Je ne sais jamais où va mon argent chaque mois.
+Utilisateur : Moi, sur téléphone.
+
+Fonctionnalités MVP :
+- Ajouter une dépense (montant + catégorie + note)
+- Lister toutes les dépenses
+- Supprimer une dépense
+
+Hors scope pour l'instant : graphiques, filtres, export, comptes multiples
+```
+
+Ce document, c'est ton point de référence. Quand l'IA part dans une direction inattendue, tu y reviens. Quand tu es tenté d'ajouter des fonctionnalités, tu le consultes.
+
+---
+
+## Récapitulatif
+
+Avant d'ouvrir ton IA :
+
+1. Formule le problème que tu résous en une phrase
+2. Identifie qui va utiliser l'app
+3. Liste les fonctionnalités concrètes (des actions, pas des concepts)
+4. Pense en écrans
+5. Définis ton MVP — et coupe tout ce qui n'en fait pas partie
+
+Ce travail préalable te fera gagner des heures de frustration. Et tes prompts seront dix fois meilleurs.

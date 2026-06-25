@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { serialize } from "next-mdx-remote/serialize";
 import { getContent, getModules } from "@/lib/content";
 import MDXContent from "@/components/MDXContent";
 
@@ -24,8 +23,6 @@ export default async function ModulePage({ params }: Props) {
   const data = getContent("modules", slug);
   if (!data) notFound();
 
-  const mdxSource = await serialize(data.source);
-
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <Link
@@ -38,7 +35,7 @@ export default async function ModulePage({ params }: Props) {
       {data.meta.description && (
         <p className="text-zinc-500 mb-10">{data.meta.description}</p>
       )}
-      <MDXContent source={mdxSource} />
+      <MDXContent source={data.source} />
     </div>
   );
 }

@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 interface Props {
-  source: MDXRemoteSerializeResult;
+  children: React.ReactNode;
 }
 
-export default function RevealSolution({ source }: Props) {
+export default function RevealSolution({ children }: Props) {
   const [revealed, setRevealed] = useState(false);
 
   return (
@@ -29,7 +28,7 @@ export default function RevealSolution({ source }: Props) {
           </div>
         ) : (
           <div className="prose prose-zinc max-w-none prose-headings:font-semibold prose-a:text-indigo-600 prose-code:text-indigo-600 prose-code:bg-zinc-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-normal">
-            <MDXRemote {...source} />
+            {children}
           </div>
         )}
       </div>

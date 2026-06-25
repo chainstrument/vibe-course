@@ -1,0 +1,140 @@
+---
+title: "Itérer avec l'IA : la méthode"
+description: "Le vibecoding, c'est une conversation. Apprends à corriger, affiner et avancer même quand ça ne marche pas du premier coup."
+order: 5
+---
+
+## L'itération, c'est la compétence centrale
+
+Le vibecoding ne consiste pas à envoyer un prompt parfait et obtenir une app parfaite. Personne ne fait ça — même les développeurs expérimentés.
+
+Le vrai workflow, c'est une **boucle** :
+
+1. Tu demandes quelque chose
+2. Tu obtiens un résultat
+3. Tu évalues ce résultat
+4. Tu corriges ou tu affines
+5. Tu recommences
+
+La différence entre quelqu'un qui obtient de bons résultats et quelqu'un qui tourne en rond, c'est la qualité de l'étape 3 et 4 : **comment évaluer et comment corriger**.
+
+---
+
+## Comment évaluer un résultat
+
+Quand l'IA te donne du code ou une réponse, pose-toi ces questions :
+
+**Est-ce que ça fait ce que j'avais demandé ?**
+Relis ton prompt. Est-ce que la réponse répond exactement à ce que tu avais demandé ? Si tu avais demandé un formulaire avec 3 champs et qu'il y en a 2, le résultat est incomplet.
+
+**Est-ce que ça marche ?**
+Teste dans le navigateur ou l'app. Clique sur les boutons. Entre des données. Soumets des formulaires. Un code visuellement parfait qui crash à l'utilisation ne vaut rien.
+
+**Est-ce que c'est maintenable ?**
+Tu n'as pas à lire tout le code, mais si quelque chose te semble étrange ou disproportionné (100 lignes pour faire quelque chose de simple), mentionne-le.
+
+---
+
+## Corriger sans repartir de zéro
+
+L'erreur classique : quand ça ne marche pas, tout supprimer et recommencer avec un nouveau prompt.
+
+C'est rarement la bonne approche. Il vaut mieux **cibler ce qui ne va pas**.
+
+### La technique du rapport de bug
+
+Quand quelque chose ne fonctionne pas, donne à l'IA un rapport précis :
+
+```
+Le comportement actuel : [ce qui se passe]
+Le comportement attendu : [ce que tu voulais]
+Ce que j'ai essayé : [si tu as tenté quelque chose]
+Message d'erreur (si applicable) : [colle le texte exact de l'erreur]
+```
+
+**Exemple :**
+> "Quand je clique sur 'Supprimer', la dépense disparaît visuellement mais elle réapparaît au rechargement. Comportement attendu : elle doit être supprimée dans la base de données. Message d'erreur dans la console : `DELETE /api/expenses/undefined 404`."
+
+Ce rapport donne à l'IA exactement ce dont elle a besoin pour identifier et corriger le problème.
+
+---
+
+## Affiner progressivement
+
+Le vibecoding fonctionne mieux en couches. Au lieu de tout demander d'un coup, construis progressivement :
+
+**Étape 1 :** Demande la structure de base (skeleton de l'app, pages, navigation)
+→ Valide que la structure est bonne
+
+**Étape 2 :** Ajoute les fonctionnalités une par une
+→ Teste chaque fonctionnalité avant de passer à la suivante
+
+**Étape 3 :** Peaufine le style et les détails
+→ La mise en page, les couleurs, les animations
+
+**Étape 4 :** Gère les cas d'erreur
+→ Que se passe-t-il si le formulaire est vide ? Si la connexion échoue ?
+
+Cette approche évite les effets "boule de neige" où une erreur précoce se propage et crée 10 autres problèmes.
+
+---
+
+## Gérer les régressions
+
+Une **régression**, c'est quand une correction casse quelque chose qui marchait avant.
+
+C'est fréquent. L'IA modifie un fichier et, sans le vouloir, change un comportement ailleurs.
+
+Comment s'en prémunir :
+- **Avance par petites étapes.** Moins tu changes de choses en une fois, moins tu risques de régressions.
+- **Teste systématiquement** ce qui existait avant de continuer.
+- **Utilise git.** Commit à chaque étape qui marche. Si une modification casse tout, tu peux revenir en arrière.
+
+Si une régression arrive, dis-le clairement à l'IA :
+> "Avant ta dernière modification, le formulaire de connexion fonctionnait. Maintenant il affiche une page blanche. Qu'est-ce qui a changé ?"
+
+---
+
+## Quand l'IA tourne en rond
+
+Parfois, l'IA propose une solution, tu lui dis que ça ne marche pas, elle propose une autre solution qui ne marche pas non plus, et ça dure.
+
+Quand tu es dans ce cas :
+
+**Reformule différemment.** Décris le problème d'un autre angle.
+
+**Donne plus de contexte.** Colle le code concerné directement dans le prompt.
+
+**Décompose encore plus.** Le problème est peut-être trop complexe. Découpe-le en sous-problèmes plus simples.
+
+**Commence une nouvelle conversation.** Les conversations longues dégradent parfois la qualité des réponses. Repart sur une conversation fraîche avec le contexte nécessaire.
+
+**Change d'IA.** Claude, ChatGPT et Gemini ont des forces différentes. Si l'un bloque sur un problème, l'autre peut débloquer.
+
+---
+
+## L'attitude juste face à l'IA
+
+L'IA n'est pas infaillible. Elle fait des erreurs, elle oublie des contraintes, elle sur-complique parfois.
+
+L'attitude à adopter : **confiance critique**.
+
+- Fais confiance à l'IA pour ce qu'elle fait bien : générer du code, suivre des instructions précises, expliquer des concepts.
+- Reste critique sur le résultat : teste, vérifie, questionne.
+- N'accepte pas un résultat que tu ne comprends pas du tout — demande une explication.
+
+Plus tu interagis avec l'IA, plus tu développes un instinct pour ce qui "sonne faux" dans une réponse. C'est une compétence qui s'acquiert.
+
+---
+
+## Récapitulatif
+
+La boucle d'itération en vibecoding :
+
+1. **Demande** une chose précise à la fois
+2. **Teste** le résultat concrètement
+3. **Identifie** ce qui ne va pas (comportement actuel vs attendu)
+4. **Corrige** en ciblant le problème, pas en repartant de zéro
+5. **Avance** en couches progressives
+
+Et quand tu bloques vraiment : reformule, donne plus de contexte, décompose, ou change de conversation.

@@ -1,0 +1,140 @@
+---
+title: "Erreurs classiques et anti-patterns"
+description: "Les pièges dans lesquels tombent tous les débutants — et comment les éviter."
+order: 7
+---
+
+## Pourquoi parler des erreurs
+
+Apprendre ce qu'il ne faut pas faire est souvent plus rapide qu'apprendre ce qu'il faut faire. Ces erreurs sont universelles — pratiquement tous ceux qui commencent le vibecoding les commettent.
+
+Les reconnaître t'évitera des heures de frustration.
+
+---
+
+## Anti-pattern #1 : Tout demander d'un coup
+
+**Ce que ça ressemble :**
+> "Crée une app complète de gestion de projet avec authentification, équipes, projets, tâches, commentaires, notifications, mode sombre, export PDF et une API mobile."
+
+**Pourquoi ça ne marche pas :**
+L'IA va générer quelque chose, mais ce sera incomplet, incohérent, et tu ne pourras pas le comprendre ni le corriger. Plus le scope est large, plus les erreurs s'accumulent en cascade.
+
+**La bonne approche :**
+Commence par l'authentification. Teste. Quand ça marche, ajoute les projets. Teste. Puis les tâches. Etc.
+
+---
+
+## Anti-pattern #2 : Ne jamais tester
+
+**Ce que ça ressemble :**
+Enchaîner les prompts sans jamais ouvrir le navigateur pour tester.
+
+**Pourquoi ça ne marche pas :**
+Un code qui semble correct peut très bien crasher à l'exécution. Plus tu laisses des bugs s'accumuler sans les détecter, plus ils sont difficiles à isoler et corriger.
+
+**La bonne approche :**
+Teste après chaque modification significative. Clique, entre des données, vérifie que ça se comporte comme tu l'attends. Si quelque chose est cassé, corrige-le **maintenant** avant de passer à la suite.
+
+---
+
+## Anti-pattern #3 : Recommencer de zéro à chaque blocage
+
+**Ce que ça ressemble :**
+Quand l'IA donne un résultat décevant, tout effacer et repartir d'une nouvelle conversation.
+
+**Pourquoi ça ne marche pas :**
+Tu perds le contexte, le travail déjà fait, et tu risques de retomber dans le même problème. C'est une fuite, pas une solution.
+
+**La bonne approche :**
+Identifie précisément ce qui ne va pas. Donne à l'IA un rapport de bug précis (comportement actuel, comportement attendu, message d'erreur). Cible le problème plutôt que de tout recommencer.
+
+---
+
+## Anti-pattern #4 : Copier du code sans le comprendre du tout
+
+**Ce que ça ressemble :**
+Accepter tout ce que l'IA produit sans jamais chercher à comprendre ce que ça fait.
+
+**Pourquoi c'est risqué :**
+Si tu ne comprends rien à ton propre code, tu ne peux pas l'expliquer à l'IA pour le corriger. Tu deviens dépendant à 100% de l'IA pour chaque modification, et tu ne sais pas si ce qu'elle produit est sécurisé.
+
+**La bonne approche :**
+Tu n'as pas besoin de comprendre chaque ligne. Mais comprends la structure globale : quels fichiers font quoi, quelle fonction fait quoi. Si tu ne comprends pas un bloc entier, demande à l'IA de l'expliquer en français.
+
+---
+
+## Anti-pattern #5 : Ignorer les messages d'erreur
+
+**Ce que ça ressemble :**
+L'app crashe, il y a un message rouge dans la console ou dans le terminal, et on l'ignore ou on demande à l'IA de "régler le bug" sans lui donner le message.
+
+**Pourquoi ça ne marche pas :**
+Les messages d'erreur contiennent exactement l'information dont l'IA a besoin pour diagnostiquer le problème. Les ignorer ou les paraphraser mal réduit drastiquement les chances de trouver la bonne solution.
+
+**La bonne approche :**
+Colle le message d'erreur complet dans ton prompt. Texte exact, stacktrace incluse. L'IA est très bonne pour interpréter les erreurs techniques — encore faut-il lui donner l'information.
+
+---
+
+## Anti-pattern #6 : Ne pas utiliser git
+
+**Ce que ça ressemble :**
+Builder son app sans jamais faire de commit. Tout le code est dans un seul état, et si quelque chose casse, il n'y a pas de retour en arrière possible.
+
+**Pourquoi c'est dangereux :**
+Les régressions arrivent tout le temps. Une modification qui "arrange" une chose en casse souvent une autre. Sans git, tu n'as aucun filet de sécurité.
+
+**La bonne approche :**
+Commit à chaque étape qui fonctionne. Un petit commit vaut mieux qu'aucun. Utilise des messages clairs :
+```
+git commit -m "feat: ajout du formulaire de dépense"
+git commit -m "fix: correction du bug de suppression"
+```
+
+Si tu ne sais pas utiliser git, demande à l'IA de t'expliquer les 5 commandes essentielles.
+
+---
+
+## Anti-pattern #7 : Vouloir la perfection dès le départ
+
+**Ce que ça ressemble :**
+Passer des heures à peaufiner le design avant que la fonctionnalité principale marche. Ou attendre que tout soit parfait avant de montrer le projet à quelqu'un.
+
+**Pourquoi c'est contre-productif :**
+D'abord, fais fonctionner. Ensuite, fais bien fonctionner. Ensuite, fais beau. Dans cet ordre.
+
+Un projet "pas parfait mais qui marche" a infiniment plus de valeur qu'un projet "parfait sur papier" qui n'existe pas encore.
+
+**La bonne approche :**
+Construis le MVP. Montre-le. Itère selon les retours. La perfection est un chemin, pas un point de départ.
+
+---
+
+## Anti-pattern #8 : Faire confiance à l'IA sur la sécurité
+
+**Ce que ça ressemble :**
+Laisser l'IA gérer l'authentification, les permissions, le stockage des mots de passe — sans vérifier si c'est sécurisé.
+
+**Pourquoi c'est risqué :**
+Les LLMs peuvent générer du code fonctionnel mais insécurisé. Ils peuvent stocker des mots de passe en clair, exposer des données privées, ou générer des failles SQL injection.
+
+**La bonne approche :**
+Pour tout ce qui touche à la sécurité (authentification, paiement, données sensibles), utilise des bibliothèques établies (NextAuth, Clerk, Stripe) plutôt que du code maison généré par l'IA. Et demande explicitement à l'IA de vérifier les aspects sécurité de ce qu'elle produit.
+
+---
+
+## Récapitulatif
+
+| Anti-pattern | Solution |
+|-------------|---------|
+| Tout demander d'un coup | Une fonctionnalité à la fois |
+| Ne jamais tester | Tester après chaque étape |
+| Recommencer de zéro | Cibler et corriger le problème |
+| Code opaque | Demander des explications |
+| Ignorer les erreurs | Coller les messages exacts |
+| Pas de git | Committer à chaque étape qui marche |
+| Vouloir la perfection | MVP d'abord, polish ensuite |
+| Confiance aveugle sur la sécurité | Utiliser des libs établies |
+
+Ces erreurs ne disparaissent pas du jour au lendemain. Mais les avoir en tête avant de commencer, c'est déjà en éviter la moitié.

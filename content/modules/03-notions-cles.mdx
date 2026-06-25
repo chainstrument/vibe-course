@@ -1,0 +1,127 @@
+---
+title: "Les notions clés sans coder"
+description: "Frontend, backend, base de données, API — comprendre ces concepts change tout à ta façon de communiquer avec une IA."
+order: 3
+---
+
+## Pourquoi apprendre ces notions si je ne code pas ?
+
+Bonne question. La réponse : pour parler le même langage que ton IA.
+
+Quand tu demandes à une IA de construire quelque chose, elle va faire des choix techniques. Si tu comprends ces choix, tu peux les valider, les questionner, ou demander autre chose. Si tu ne les comprends pas, tu acceptes n'importe quoi — et tu te retrouves avec une app que tu ne comprends pas, que tu ne peux pas déboguer, et que tu ne sais pas comment faire évoluer.
+
+Ces notions ne nécessitent pas d'écrire une seule ligne de code pour être comprises.
+
+---
+
+## Le frontend
+
+**Le frontend, c'est ce que l'utilisateur voit et touche.**
+
+Quand tu ouvres une application sur ton téléphone ou dans ton navigateur, tout ce que tu vois — les boutons, les textes, les images, les formulaires — c'est le frontend.
+
+Le frontend s'exécute **chez toi**, dans ton navigateur ou ton téléphone. Le code tourne sur ton appareil.
+
+**Technologies courantes :** HTML, CSS, JavaScript, React, Next.js.
+
+**Ce que tu dois savoir :** le frontend, c'est l'interface. Tout ce qui concerne l'apparence et les interactions utilisateur, c'est ici.
+
+---
+
+## Le backend
+
+**Le backend, c'est ce qui se passe côté serveur — que l'utilisateur ne voit pas.**
+
+Quand tu te connectes à Instagram, quelque part un serveur vérifie ton mot de passe, récupère tes photos, et te les envoie. Ce traitement, c'est le backend.
+
+Le backend s'exécute sur des **serveurs** (des ordinateurs dédiés, souvent dans le cloud), pas chez toi.
+
+**Technologies courantes :** Node.js, Python, Go, Java.
+
+**Ce que tu dois savoir :** le backend gère la logique métier, l'authentification, les calculs complexes, et la communication avec la base de données.
+
+### Faut-il toujours un backend ?
+
+Non ! Pour des apps simples — une liste de tâches, une landing page, un portfolio — le frontend seul peut suffire. C'est ce qu'on appelle une app **statique**.
+
+Dès que tu as besoin de stocker des données partagées entre utilisateurs, ou de gérer des comptes, un backend devient nécessaire.
+
+---
+
+## La base de données
+
+**La base de données, c'est là où les données sont stockées de façon permanente.**
+
+Sans base de données, quand tu fermes ton app, tout disparaît. Avec une base de données, tes données persistent.
+
+Imagine une base de données comme un ensemble de tableaux Excel très structurés, accessibles très rapidement par le code.
+
+**Types courants :**
+- **SQL** (PostgreSQL, MySQL, SQLite) : données structurées en tables avec des colonnes définies. Idéal pour des relations complexes.
+- **NoSQL** (MongoDB, Firebase) : données plus flexibles, stockées comme des documents JSON. Idéal pour des structures qui évoluent souvent.
+
+**Ce que tu dois savoir :** si ton app a besoin de "se souvenir" de quelque chose entre deux sessions, il faut une base de données. L'IA peut en configurer une pour toi — mais tu dois savoir que ça existe.
+
+---
+
+## L'API
+
+**Une API, c'est un contrat qui permet à deux programmes de communiquer.**
+
+Quand l'app météo sur ton téléphone affiche la température, elle ne la calcule pas elle-même. Elle appelle une **API météo** — un service externe qui lui répond avec les données.
+
+API signifie *Application Programming Interface*. En pratique, c'est une liste d'adresses URL auxquelles on peut envoyer des requêtes et recevoir des réponses (souvent au format JSON).
+
+**Exemples concrets :**
+- Ton frontend appelle l'API de ton backend pour récupérer la liste des utilisateurs
+- Ton app appelle l'API de Stripe pour traiter un paiement
+- Ton app appelle l'API d'OpenAI pour générer du texte
+
+**Ce que tu dois savoir :** une API est une interface entre deux systèmes. Si tu veux intégrer un service externe (paiement, carte, email...), tu passeras par son API. L'IA saura comment l'appeler — mais tu dois savoir que ça se configure.
+
+---
+
+## Le déploiement
+
+**Le déploiement, c'est mettre ton app en ligne pour que d'autres puissent y accéder.**
+
+Quand tu développes localement, l'app tourne sur ton ordinateur. Personne d'autre ne peut y accéder. Pour la rendre publique, il faut la **déployer** sur un serveur accessible sur internet.
+
+**Services courants :**
+- **Vercel** : idéal pour les frontends Next.js (gratuit pour commencer)
+- **Railway, Render** : pour les backends
+- **Supabase, PlanetScale** : pour les bases de données dans le cloud
+
+**Ce que tu dois savoir :** un module entier est dédié au déploiement. Pour l'instant, retiens que "publier une app" n'est pas magique — ça demande quelques étapes, mais c'est très accessible avec les bons outils.
+
+---
+
+## Comment tout s'assemble
+
+Voici un exemple concret : une app de liste de courses partagée.
+
+```
+Utilisateur A (navigateur)
+   → Frontend (React) — affiche la liste
+      → API (backend) — récupère les données
+         → Base de données — stocke les items
+
+Utilisateur B (téléphone)
+   → Frontend (React Native) — même liste en temps réel
+      → API (même backend) — même source de données
+```
+
+Le frontend parle au backend via l'API. Le backend lit et écrit dans la base de données. Les deux frontends voient la même liste parce qu'ils partagent la même base de données.
+
+---
+
+## Récapitulatif
+
+| Concept | Rôle | Où ça tourne |
+|--------|------|--------------|
+| Frontend | Interface utilisateur | Chez l'utilisateur (navigateur/téléphone) |
+| Backend | Logique métier | Sur un serveur |
+| Base de données | Stockage permanent | Sur un serveur |
+| API | Communication entre systèmes | Partout |
+
+Ces quatre concepts couvrent 90% de ce dont tu auras besoin pour comprendre et diriger la construction d'une app avec une IA.

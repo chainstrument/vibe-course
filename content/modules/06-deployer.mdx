@@ -1,0 +1,125 @@
+---
+title: "Déployer ce qu'on a construit"
+description: "Une app qui reste sur ton ordi n'existe pas. Voici comment la mettre en ligne gratuitement."
+order: 6
+---
+
+## Pourquoi déployer
+
+Développer en local, c'est bien. Mais une app accessible uniquement sur ton ordinateur ne sert à personne d'autre.
+
+Déployer, c'est **publier ton app sur internet** pour que n'importe qui puisse y accéder depuis n'importe où, avec n'importe quel appareil.
+
+C'est aussi l'étape qui transforme un projet en produit.
+
+---
+
+## Les différentes choses à déployer
+
+Selon la complexité de ton app, tu peux avoir jusqu'à trois éléments à déployer :
+
+| Élément | Ce que c'est | Service recommandé |
+|---------|-------------|-------------------|
+| Frontend | L'interface utilisateur | Vercel, Netlify |
+| Backend | L'API / serveur | Railway, Render, Fly.io |
+| Base de données | Les données | Supabase, PlanetScale, Railway |
+
+Pour une app statique (sans backend), seul le frontend est à déployer. C'est le cas le plus simple — et c'est ce qu'on va couvrir en priorité.
+
+---
+
+## Déployer un frontend Next.js sur Vercel
+
+Vercel est la plateforme créée par les mêmes gens que Next.js. C'est l'option la plus simple pour déployer une app Next.js, et elle est **gratuite** pour des projets personnels.
+
+### Étape 1 : Publier ton code sur GitHub
+
+Si ce n'est pas déjà fait, mets ton projet sur GitHub.
+
+```
+# Dans ton terminal, dans le dossier du projet
+git init
+git add .
+git commit -m "premier commit"
+git remote add origin https://github.com/ton-username/ton-projet.git
+git push -u origin main
+```
+
+### Étape 2 : Connecter Vercel à GitHub
+
+1. Va sur [vercel.com](https://vercel.com) et crée un compte (gratuit)
+2. Clique sur "Add New Project"
+3. Choisis "Import Git Repository"
+4. Sélectionne ton repo GitHub
+5. Clique sur "Deploy"
+
+C'est tout. Vercel détecte automatiquement que c'est un projet Next.js, configure le build, et publie ton app.
+
+### Étape 3 : Ton app est en ligne
+
+Vercel te donne une URL du type `ton-projet.vercel.app`. Partage-la — l'app est accessible dans le monde entier.
+
+### Les déploiements suivants
+
+À chaque fois que tu pousses du code sur la branche `main`, Vercel redéploie automatiquement. Tu n'as rien d'autre à faire.
+
+---
+
+## Les variables d'environnement
+
+Si ton app utilise des clés API, des URLs de base de données, ou d'autres informations sensibles, tu ne dois **jamais les écrire directement dans le code**.
+
+Ces informations sont stockées dans des **variables d'environnement** — un fichier `.env` en local, et une configuration dans le dashboard de Vercel en production.
+
+**Exemple :** si tu utilises Supabase, tu as besoin de l'URL et de la clé API de ton projet. En local, tu les mets dans un fichier `.env.local` :
+
+```
+NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOi...
+```
+
+Sur Vercel, tu vas dans Settings > Environment Variables et tu entres les mêmes valeurs.
+
+Le fichier `.env.local` ne doit jamais être commité sur GitHub — il contient des secrets. Vérifie que `.env*` est bien dans ton `.gitignore`.
+
+---
+
+## Déployer un backend
+
+Si ton app a un backend (une API séparée), il faut le déployer sur un service différent.
+
+**Railway** est l'option la plus simple pour commencer :
+1. Crée un compte sur [railway.app](https://railway.app)
+2. Crée un nouveau projet
+3. Connecte ton repo GitHub
+4. Railway détecte le type de projet et configure le déploiement
+
+**Render** fonctionne de façon similaire et est aussi gratuit pour commencer.
+
+Pour la base de données, **Supabase** est une excellente option : c'est PostgreSQL hébergé, avec une interface web pour explorer tes données, et une API auto-générée.
+
+---
+
+## Les domaines personnalisés
+
+Par défaut, ton app est accessible sur `ton-projet.vercel.app`. Si tu veux un vrai domaine (`monapp.com`), il faut :
+
+1. Acheter un domaine chez un registrar (Namecheap, OVH, Google Domains...)
+2. Dans Vercel, aller dans Settings > Domains
+3. Ajouter ton domaine
+4. Configurer les DNS chez ton registrar (Vercel te donne les valeurs exactes)
+
+Ça prend quelques minutes à quelques heures pour que le domaine se propage sur internet.
+
+---
+
+## Récapitulatif du processus
+
+Pour déployer une app Next.js simple :
+
+1. **Code sur GitHub** — ton projet est versionné et accessible
+2. **Vercel connecté à GitHub** — le déploiement est automatique à chaque push
+3. **Variables d'environnement** — configurées sur Vercel, jamais dans le code
+4. **Domaine** — optionnel, mais recommandé pour un vrai produit
+
+Le déploiement n'est plus une étape complexe réservée aux DevOps. Avec Vercel, c'est littéralement une affaire de minutes.

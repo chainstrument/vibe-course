@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import { getExercise, getExercises } from "@/lib/content";
 import MDXContent from "@/components/MDXContent";
 import RevealSolution from "@/components/RevealSolution";
@@ -31,9 +31,6 @@ export default async function ExercicePage({ params }: Props) {
   const data = getExercise(slug);
   if (!data) notFound();
 
-  const statementSource = await serialize(data.statement);
-  const solutionSource = data.solution ? await serialize(data.solution) : null;
-
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <Link
@@ -58,9 +55,13 @@ export default async function ExercicePage({ params }: Props) {
         <p className="text-zinc-500 mb-10">{data.meta.description}</p>
       )}
 
-      <MDXContent source={statementSource} />
+      <MDXContent source={data.statement} />
 
-      {solutionSource && <RevealSolution source={solutionSource} />}
+      {data.solution && (
+        <RevealSolution>
+          <MDXRemote source={data.solution} />
+        </RevealSolution>
+      )}
     </div>
   );
 }
