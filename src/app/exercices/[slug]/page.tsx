@@ -1,11 +1,15 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getExercise, getExercises } from "@/lib/content";
+import { readingTime } from "@/lib/readingTime";
 import MDXContent from "@/components/MDXContent";
 import RevealSolution from "@/components/RevealSolution";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PrevNext from "@/components/PrevNext";
 import ProgressCheckbox from "@/components/ProgressCheckbox";
+import ShareButton from "@/components/ShareButton";
+
+const siteUrl = "https://vibe-course.vercel.app";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -33,6 +37,8 @@ export default async function ExercicePage({ params }: Props) {
   const data = getExercise(slug);
   if (!data) notFound();
 
+  const time = readingTime(data.statement);
+  const pageUrl = `${siteUrl}/exercices/${slug}`;
   const exercises = getExercises();
   const idx = exercises.findIndex((e) => e.slug === slug);
   const prev = idx > 0 ? exercises[idx - 1] : null;
@@ -56,9 +62,14 @@ export default async function ExercicePage({ params }: Props) {
         )}
       </div>
 
-      {data.meta.description && (
-        <p className="text-zinc-400 mb-10">{data.meta.description}</p>
-      )}
+      <div className="flex items-center justify-between gap-4 mb-10">
+        <div className="flex items-center gap-3 text-sm text-zinc-500">
+          {data.meta.description && <span>{data.meta.description}</span>}
+          <span className="text-zinc-700">·</span>
+          <span>{time}</span>
+        </div>
+        <ShareButton title={data.meta.title} url={pageUrl} />
+      </div>
 
       <MDXContent source={data.statement} />
 
