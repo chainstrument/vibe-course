@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { getModules, getExercises } from "@/lib/content";
+import ProgressStats from "@/components/ProgressStats";
 
 export default function HomePage() {
+  const modules = getModules();
+  const exercises = getExercises();
+
   return (
     <div className="relative">
       {/* Glow de fond hero */}
@@ -101,6 +106,9 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+        {/* Progression */}
+        <ProgressStats totalModules={modules.length} totalExercises={exercises.length} />
 
         {/* CTA final */}
         <section className="py-16 border-t border-white/10 text-center">

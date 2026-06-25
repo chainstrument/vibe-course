@@ -4,6 +4,7 @@ import MDXContent from "@/components/MDXContent";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PrevNext from "@/components/PrevNext";
 import TableOfContents from "@/components/TableOfContents";
+import ProgressCheckbox from "@/components/ProgressCheckbox";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -44,6 +45,9 @@ export default async function ModulePage({ params }: Props) {
           <p className="text-zinc-400 mb-10">{data.meta.description}</p>
         )}
         <MDXContent source={data.source} />
+        <div className="mt-10 pt-8 border-t border-white/10">
+          <ProgressCheckbox type="modules" slug={slug} />
+        </div>
         <PrevNext prev={prev} next={next} basePath="/modules" />
       </div>
       <TableOfContents source={data.source} />

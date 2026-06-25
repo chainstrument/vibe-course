@@ -5,6 +5,7 @@ import MDXContent from "@/components/MDXContent";
 import RevealSolution from "@/components/RevealSolution";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PrevNext from "@/components/PrevNext";
+import ProgressCheckbox from "@/components/ProgressCheckbox";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -67,6 +68,9 @@ export default async function ExercicePage({ params }: Props) {
         </RevealSolution>
       )}
 
+      <div className="mt-10 pt-8 border-t border-white/10">
+        <ProgressCheckbox type="exercises" slug={slug} label="Marquer comme fait" />
+      </div>
       <PrevNext prev={prev} next={next} basePath="/exercices" />
     </div>
   );
