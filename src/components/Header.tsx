@@ -14,6 +14,9 @@ export default function Header() {
           <Link href="/exercices" className="hover:text-white transition-colors">
             Exercices
           </Link>
+          <Link href="/a-propos" className="hover:text-white transition-colors">
+            À propos
+          </Link>
         </nav>
       </div>
     </header>
