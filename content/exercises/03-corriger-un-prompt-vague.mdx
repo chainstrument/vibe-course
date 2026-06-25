@@ -1,0 +1,160 @@
+---
+title: "Corriger un prompt vague"
+description: "Identifie ce qui ne va pas dans ces prompts et réécris-les correctement."
+order: 3
+level: "débutant"
+---
+
+## Objectif
+
+Développer ton instinct pour reconnaître un prompt de mauvaise qualité — et savoir comment l'améliorer.
+
+---
+
+## L'exercice
+
+Voici 4 prompts réels que des débutants envoient à une IA. Pour chacun, identifie **ce qui ne va pas** et **réécris-le en mieux**.
+
+---
+
+### Prompt A
+
+> *"Fais-moi un site web sympa."*
+
+Qu'est-ce qui manque ? Comment l'améliorer ?
+
+---
+
+### Prompt B
+
+> *"J'ai une erreur dans mon code, aide-moi."*
+
+Qu'est-ce qui manque ? Comment l'améliorer ?
+
+---
+
+### Prompt C
+
+> *"Ajoute une fonctionnalité de paiement, un système de notifications, un mode hors-ligne, et une version mobile native à mon app."*
+
+Qu'est-ce qui ne va pas ? Comment l'améliorer ?
+
+---
+
+### Prompt D
+
+> *"Non c'est pas ça, recommence."*
+
+Qu'est-ce qui ne va pas ? Comment l'améliorer ?
+
+---
+
+## Comment faire
+
+Prends le temps d'analyser chaque prompt. Écris tes propres versions améliorées avant de consulter le corrigé.
+
+---corrige---
+
+## Corrigé
+
+---
+
+### Prompt A — "Fais-moi un site web sympa"
+
+**Ce qui ne va pas :**
+- Aucun contexte (pour quoi faire ? pour qui ?)
+- "Sympa" n'est pas une spec — c'est subjectif
+- Pas de stack technique
+- Pas de contenu, pas de pages, pas d'objectif
+
+**Version améliorée :**
+```
+Je veux créer un site portfolio personnel pour présenter mon travail de graphiste.
+
+Stack : Next.js, Tailwind CSS.
+
+Pages :
+- Accueil : photo, courte bio (2-3 phrases), lien vers les projets
+- Projets : grille de 6 cartes avec image + titre + description courte
+- Contact : formulaire simple (nom, email, message)
+
+Style : sobre, fond blanc, typographie épurée. Pas d'animations complexes.
+
+Commence par le layout global (header avec nav, footer) et la page d'accueil.
+```
+
+---
+
+### Prompt B — "J'ai une erreur dans mon code, aide-moi"
+
+**Ce qui ne va pas :**
+- Aucune information sur l'erreur
+- Aucun code fourni
+- Aucun contexte sur le projet
+
+**Version améliorée :**
+```
+J'ai une erreur dans mon app Next.js. Voici le message d'erreur dans la console :
+
+TypeError: Cannot read properties of undefined (reading 'map')
+  at TodoList (src/components/TodoList.tsx:12)
+
+Voici le composant concerné :
+
+[colle ton code ici]
+
+Le comportement attendu : afficher la liste des tâches passées en props.
+```
+
+---
+
+### Prompt C — Trop de choses à la fois
+
+**Ce qui ne va pas :**
+- 4 fonctionnalités majeures demandées en une seule fois
+- Chacune est complexe individuellement (paiement = Stripe + webhooks, mobile natif = React Native...)
+- Résultat probable : code incomplet, incohérent, impossible à déboguer
+
+**Version améliorée :**
+Décomposer en 4 prompts séparés, dans le bon ordre :
+
+```
+Prompt 1 : Intègre Stripe pour les paiements uniques.
+J'utilise Next.js. L'utilisateur clique "Acheter", est redirigé vers
+Stripe Checkout, et revient sur /success après paiement.
+Commence par créer la route API /api/checkout.
+```
+
+Puis une fois ça fait et testé, passer au prompt 2 pour les notifications, etc.
+
+---
+
+### Prompt D — "Non c'est pas ça, recommence"
+
+**Ce qui ne va pas :**
+- L'IA ne sait pas ce qui ne va pas
+- Elle va deviner — et probablement se tromper encore
+- "Recommencer" sans plus d'info = risque de perdre ce qui fonctionnait
+
+**Version améliorée :**
+```
+Le formulaire s'affiche bien, mais il y a deux problèmes :
+
+1. Quand je clique sur "Soumettre", la page se recharge au lieu d'appeler l'API.
+   → Il manque `event.preventDefault()` dans le handler.
+
+2. Le champ "email" accepte du texte libre sans valider le format email.
+   → Il faut ajouter `type="email"` sur l'input et une validation côté serveur.
+
+Corrige uniquement ces deux points sans toucher au reste du formulaire.
+```
+
+---
+
+## La règle à retenir
+
+Un bon prompt de correction contient toujours :
+1. Ce qui **fonctionne** (pour ne pas le casser)
+2. Ce qui **ne fonctionne pas** (comportement observé)
+3. Ce qui **devrait se passer** (comportement attendu)
+4. Le **message d'erreur exact** si applicable

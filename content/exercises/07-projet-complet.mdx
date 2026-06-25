@@ -1,0 +1,181 @@
+---
+title: "Projet complet : builder et déployer une mini-app"
+description: "Du brief au déploiement en ligne : construis une vraie app avec l'IA, de A à Z."
+order: 7
+level: "avancé"
+---
+
+## Objectif
+
+Mettre en pratique tout ce que tu as appris — définition, prompts, itération, gestion des bugs — sur un projet complet que tu vas déployer en ligne.
+
+---
+
+## Le projet : une app de citations inspirantes
+
+Tu vas construire **Quotly** — une mini-app qui affiche une citation aléatoire et permet d'en ajouter de nouvelles.
+
+Simple en apparence, mais ce projet couvre les vraies difficultés : état React, données persistées, et déploiement.
+
+---
+
+## Fonctionnalités
+
+**MVP attendu :**
+- Afficher une citation aléatoire (auteur + texte) au chargement
+- Bouton "Nouvelle citation" pour afficher une autre citation au hasard
+- Bouton "Ajouter une citation" qui ouvre un formulaire (texte + auteur)
+- Les citations ajoutées sont sauvegardées dans le `localStorage` (pas de BDD)
+- Liste des citations ajoutées par l'utilisateur, avec possibilité de les supprimer
+
+**Stack :** Next.js, Tailwind CSS. Tout côté client (pas d'API, pas de backend).
+
+---
+
+## Les étapes
+
+Cet exercice est libre — tu decides de l'ordre et des prompts. Voici des jalons pour te guider.
+
+### Jalon 1 — Brief et structure
+
+Avant d'ouvrir l'IA : écris le brief complet (fonctionnalités, écrans, hors-scope). Puis demande la structure des fichiers et composants.
+
+### Jalon 2 — Données de départ
+
+Crée une liste de 10 citations de départ dans un fichier `data/quotes.ts`. Demande à l'IA de l'écrire, puis vérifie le contenu.
+
+### Jalon 3 — Composant principal
+
+Construis le composant qui affiche une citation aléatoire avec le bouton de renouvellement.
+
+### Jalon 4 — Ajout de citations
+
+Ajoute le formulaire et la logique de sauvegarde dans le `localStorage`.
+
+### Jalon 5 — Liste des citations personnelles
+
+Affiche les citations ajoutées par l'utilisateur avec un bouton de suppression.
+
+### Jalon 6 — Style et polish
+
+Peaufine le design. Vérifie la responsive. Teste tous les cas (liste vide, localStorage vide, formulaire vide soumis...).
+
+### Jalon 7 — Déploiement
+
+Pousse sur GitHub, connecte à Vercel, déploie. Partage le lien.
+
+---
+
+## Critères de réussite
+
+- [ ] L'app s'affiche sans erreur
+- [ ] Une citation aléatoire s'affiche au chargement
+- [ ] Le bouton "Nouvelle citation" change la citation affichée
+- [ ] On peut ajouter une citation via le formulaire
+- [ ] Les citations ajoutées persistent après rechargement de la page
+- [ ] On peut supprimer une citation personnelle
+- [ ] L'app est responsive
+- [ ] L'app est déployée et accessible via une URL publique
+
+---
+
+## Conseil pour ce projet
+
+Tu vas bloquer. C'est normal. C'est l'exercice le plus difficile de cette plateforme.
+
+Quand tu bloques :
+1. Identifie précisément le problème (comportement actuel vs attendu)
+2. Cherche le message d'erreur exact
+3. Envoie un prompt ciblé — pas "ça marche pas, aide-moi"
+4. Si ça tourne en rond après 3 essais sur le même bug, décompose encore plus
+
+Le déploiement peut faire peur, mais c'est la partie la plus gratifiante. Une app en ligne que tu as construite toi-même, ça change quelque chose.
+
+---corrige---
+
+## Corrigé : prompts clés et pièges à éviter
+
+---
+
+### Prompt Jalon 2 — Citations de départ
+
+```
+Crée un fichier `src/data/quotes.ts` avec un tableau de 10 citations
+inspirantes sur le thème du travail et de la créativité.
+
+Format TypeScript :
+export interface Quote {
+  id: string;
+  text: string;
+  author: string;
+}
+
+export const defaultQuotes: Quote[] = [
+  { id: "1", text: "...", author: "..." },
+  // etc.
+];
+```
+
+---
+
+### Prompt Jalon 3 — Citation aléatoire
+
+```
+Crée un composant React `src/components/QuoteDisplay.tsx`.
+
+Il reçoit en props :
+- `quotes: Quote[]` — la liste complète des citations
+- `onNew: () => void` — callback appelé quand l'utilisateur clique "Nouvelle citation"
+- `currentQuote: Quote` — la citation actuellement affichée
+
+Il affiche :
+- Le texte de la citation en grand (text-2xl, italic)
+- L'auteur en dessous (text-sm, text-zinc-500)
+- Un bouton "Nouvelle citation →" qui appelle onNew
+
+La logique de sélection aléatoire est gérée dans le composant parent (page.tsx),
+pas ici. Ce composant est purement d'affichage.
+```
+
+---
+
+### Piège classique : localStorage et SSR
+
+Next.js génère les pages côté serveur. Or `localStorage` n'existe que dans le navigateur — pas côté serveur. Si tu accèdes à `localStorage` directement, tu auras une erreur `ReferenceError: localStorage is not defined`.
+
+**Prompt pour éviter ce piège :**
+```
+J'utilise Next.js. Je veux lire et écrire dans localStorage pour sauvegarder
+les citations de l'utilisateur.
+
+Attention : Next.js rend les pages côté serveur, localStorage n'est pas disponible
+pendant le SSR.
+
+Implémente la lecture du localStorage dans un useEffect (qui ne s'exécute que
+côté client), et initialise l'état avec un tableau vide [] par défaut.
+```
+
+---
+
+### Prompt Jalon 7 — Déploiement
+
+```
+Mon projet Next.js est prêt à être déployé sur Vercel.
+
+Il n'utilise pas de variables d'environnement (pas de BDD, pas d'API externe).
+
+Donne-moi les étapes exactes pour :
+1. Pousser le code sur GitHub (commandes git)
+2. Connecter le repo à Vercel
+3. Vérifier que le déploiement s'est bien passé
+```
+
+---
+
+### Ce que ce projet t'apprend
+
+**La gestion d'état complexe.** Entre les citations par défaut, les citations utilisateur, et la citation affichée, tu manipules plusieurs sources de données simultanément.
+
+**Les contraintes du SSR.** `localStorage`, `window`, `document` — ces APIs du navigateur ne sont pas disponibles côté serveur. Savoir les contourner est une compétence clé.
+
+**La fierté du déploiement.** Après ce projet, tu auras une vraie app en ligne construite avec une IA. Tu peux l'améliorer, la montrer, la partager. C'est ça, le vibecoding.

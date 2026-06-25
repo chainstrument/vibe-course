@@ -1,0 +1,121 @@
+---
+title: "Gérer un bug remonté par l'IA"
+description: "L'IA t'a signalé une erreur dans ton code. Apprends à l'analyser, la comprendre, et la corriger avec méthode."
+order: 6
+level: "intermédiaire"
+---
+
+## Objectif
+
+Apprendre à lire et comprendre un message d'erreur, identifier sa cause, et le corriger en collaborant efficacement avec l'IA.
+
+---
+
+## La situation
+
+Tu développes une app de suivi de dépenses. Tu viens d'ajouter une page qui affiche la liste des dépenses récupérées depuis une API.
+
+En ouvrant la page dans le navigateur, tu vois une **page blanche** et ces erreurs dans la console du navigateur (F12 → onglet Console) :
+
+```
+TypeError: expenses.map is not a function
+    at ExpenseList (src/components/ExpenseList.tsx:8:22)
+```
+
+Et dans le terminal où tourne `npm run dev` :
+
+```
+Error: Hydration failed because the server rendered HTML didn't match the client.
+```
+
+---
+
+## Ce qu'on te demande
+
+### Partie 1 — Analyse
+
+Avant d'aller voir l'IA, réponds à ces questions :
+
+1. Quelle est la première erreur ? Que te dit-elle ?
+2. Que signifie "`.map` is not a function" en français simple ?
+3. Quelle en est la cause probable ?
+4. Qu'est-ce que "Hydration failed" signifie (cherche dans le module 3 si besoin) ?
+
+### Partie 2 — Le prompt de correction
+
+Écris le prompt que tu enverrais à l'IA pour corriger ces bugs. Inclus :
+- Le contexte du projet
+- Les messages d'erreur exacts
+- Ce que tu penses être la cause
+- Ce que tu attends comme correction
+
+---corrige---
+
+## Corrigé
+
+---
+
+### Partie 1 — Analyse des erreurs
+
+**Erreur 1 : `TypeError: expenses.map is not a function`**
+
+Cette erreur dit que tu appelles `.map()` sur une variable `expenses` qui **n'est pas un tableau**.
+
+`.map()` est une méthode qui n'existe que sur les tableaux JavaScript. Si `expenses` est `null`, `undefined`, un objet, ou une chaîne de caractères, `.map()` n'existe pas dessus — d'où l'erreur.
+
+**Cause probable :** l'API n'a pas encore répondu quand le composant essaie d'afficher les données. À ce moment-là, `expenses` est `undefined` ou `null` (sa valeur initiale), et `.map()` plante.
+
+**Solution :** initialiser `expenses` avec un tableau vide `[]` ou vérifier que les données sont chargées avant d'appeler `.map()`.
+
+---
+
+**Erreur 2 : `Hydration failed`**
+
+"Hydration" désigne le processus par lequel React "prend le contrôle" du HTML généré côté serveur pour le rendre interactif côté client.
+
+L'erreur "Hydration failed" signifie que le HTML généré côté serveur est différent de ce que React essaie de produire côté client. C'est souvent causé par des données qui varient entre le serveur et le client (dates, données aléatoires, ou données chargées de façon asynchrone).
+
+Ces deux erreurs sont souvent liées — elles viennent du même problème de gestion du chargement asynchrone.
+
+---
+
+### Partie 2 — Le prompt de correction
+
+```
+J'ai deux erreurs dans mon app Next.js de suivi de dépenses.
+
+Contexte : j'ai un composant ExpenseList qui récupère des dépenses
+via un fetch et les affiche avec .map(). La page s'affiche blanche.
+
+Erreur 1 (console navigateur) :
+TypeError: expenses.map is not a function
+    at ExpenseList (src/components/ExpenseList.tsx:8:22)
+
+Erreur 2 (terminal) :
+Error: Hydration failed because the server rendered HTML didn't match the client.
+
+Ma cause probable : expenses est undefined ou null au premier rendu,
+avant que le fetch soit terminé. J'initialise expenses avec useState(null)
+au lieu de useState([]).
+
+Voici le composant :
+[colle ton code ici]
+
+Corrections attendues :
+1. Initialiser expenses avec [] au lieu de null
+2. Ajouter une condition avant .map() : ne pas afficher la liste
+   si expenses est vide ou en cours de chargement
+3. Ajouter un état loading pour afficher "Chargement..." pendant le fetch
+
+Ne touche qu'à ce composant.
+```
+
+---
+
+### Ce qu'on apprend ici
+
+**Lire les erreurs avant de les copier-coller.** Une erreur bien comprise = un meilleur prompt = une meilleure correction. L'IA peut corriger à l'aveugle, mais toi tu apprends à chaque fois que tu comprends.
+
+**Les deux erreurs viennent du même endroit.** Souvent, une cascade d'erreurs a une seule cause racine. Trouver la racine permet de tout corriger en un coup.
+
+**Inclure son hypothèse dans le prompt.** Quand tu as une idée de la cause, dis-le à l'IA. Elle confirme, corrige, ou affine — et tu apprends dans tous les cas.

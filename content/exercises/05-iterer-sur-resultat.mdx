@@ -1,0 +1,139 @@
+---
+title: "Itérer sur un résultat insatisfaisant"
+description: "L'IA a produit quelque chose qui ne correspond pas à ce que tu voulais. Apprends à corriger sans repartir de zéro."
+order: 5
+level: "intermédiaire"
+---
+
+## Objectif
+
+Pratiquer l'art de corriger un résultat de l'IA de façon précise et efficace — sans effacer ce qui fonctionne.
+
+---
+
+## La situation
+
+Tu as demandé à une IA de créer un formulaire de contact. Voici le prompt que tu as envoyé :
+
+> *"Crée un formulaire de contact avec nom, email et message."*
+
+L'IA a généré quelque chose, et tu l'as intégré dans ta page. Résultat : le formulaire s'affiche, mais plusieurs choses ne vont pas.
+
+---
+
+## Les problèmes identifiés
+
+En testant le formulaire dans le navigateur, tu constates :
+
+**Problème 1 :** Le champ "email" n'a pas de validation — on peut entrer n'importe quoi.
+
+**Problème 2 :** Quand on soumet le formulaire sans remplir le champ "message", rien ne signale que c'est obligatoire. Le formulaire s'envoie quand même (avec un message vide).
+
+**Problème 3 :** Après la soumission, le formulaire ne se réinitialise pas — les champs gardent leurs valeurs.
+
+**Problème 4 :** Il n'y a pas de feedback visuel après l'envoi. L'utilisateur ne sait pas si ça a fonctionné.
+
+---
+
+## Ce qu'on te demande
+
+Pour chacun des 4 problèmes, **écris un prompt de correction ciblé**.
+
+Règles :
+- Un prompt par problème
+- Chaque prompt doit décrire le problème actuel ET le comportement attendu
+- Ne demande pas à l'IA de tout réécrire — seulement de corriger ce point précis
+
+---
+
+## Comment faire
+
+Rédige tes 4 prompts, puis consulte le corrigé pour comparer.
+
+---corrige---
+
+## Corrigé : les 4 prompts de correction
+
+---
+
+### Prompt 1 — Validation de l'email
+
+```
+Le champ email accepte n'importe quel texte sans valider le format.
+
+Comportement attendu : si l'utilisateur entre un texte qui n'est pas
+une adresse email valide (sans @, sans domaine...), le formulaire ne
+doit pas se soumettre et un message d'erreur doit s'afficher sous le champ :
+"Veuillez entrer une adresse email valide."
+
+Solution attendue : ajoute `type="email"` sur l'input et gère l'erreur
+avec la validation HTML native ou avec un useState pour le message d'erreur.
+Ne touche qu'au champ email.
+```
+
+---
+
+### Prompt 2 — Champ message obligatoire
+
+```
+Le champ "message" est optionnel actuellement : on peut soumettre le formulaire
+avec un message vide.
+
+Comportement attendu : si le champ message est vide à la soumission,
+bloquer l'envoi et afficher "Le message ne peut pas être vide" sous le champ.
+
+Ajoute cette validation dans le handler de soumission, avant l'appel API.
+Ne touche à rien d'autre.
+```
+
+---
+
+### Prompt 3 — Réinitialisation après soumission
+
+```
+Après la soumission réussie du formulaire, les champs gardent leurs valeurs.
+
+Comportement attendu : après une soumission réussie, vider tous les champs
+(nom, email, message remis à "").
+
+Dans le handler onSubmit, après la confirmation de succès, remets les états
+à leur valeur initiale. Ne touche qu'à cette partie.
+```
+
+---
+
+### Prompt 4 — Feedback visuel
+
+```
+Après avoir soumis le formulaire, l'utilisateur ne reçoit aucun retour visuel.
+Il ne sait pas si l'envoi a fonctionné ou non.
+
+Comportement attendu :
+- Si l'envoi réussit : afficher un message vert "Message envoyé ! On te répond bientôt."
+  qui remplace le formulaire (ou s'affiche en haut).
+- Si l'envoi échoue : afficher un message rouge "Une erreur s'est produite. Réessaie."
+  sans effacer les champs (pour que l'utilisateur puisse réessayer).
+
+Ajoute un état `status: "idle" | "success" | "error"` et affiche le bon message
+selon l'état. Ne touche qu'à la logique d'affichage du feedback.
+```
+
+---
+
+## Analyse : pourquoi ces prompts fonctionnent
+
+**Ils décrivent le comportement actuel** — l'IA sait ce qu'il y a à changer.
+
+**Ils décrivent le comportement attendu** — l'IA sait exactement quoi produire.
+
+**Ils délimitent la portée** — "ne touche qu'à cette partie" évite les régressions.
+
+**Ils suggèrent une implémentation** (sans l'imposer) — ça guide sans contraindre.
+
+---
+
+## À retenir
+
+La correction ciblée est une compétence à part entière. La plupart des débutants demandent à l'IA de "tout corriger" — et obtiennent souvent de nouveaux problèmes en plus des anciens.
+
+Un bug à la fois. Un prompt à la fois. Une validation à la fois.

@@ -1,0 +1,97 @@
+---
+title: "Décrire une app en fonctionnalités"
+description: "Avant de prompter, apprends à décomposer une idée en fonctionnalités concrètes et en écrans."
+order: 2
+level: "débutant"
+---
+
+## Objectif
+
+Passer d'une idée floue à une liste de fonctionnalités précises — sans toucher à une IA pour l'instant.
+
+---
+
+## L'idée de départ
+
+> *"Je veux une app pour suivre mes lectures — les livres que j'ai lus, ceux que je veux lire, et mon avis sur chacun."*
+
+C'est une idée. Pas encore une app.
+
+---
+
+## Ce qu'on te demande
+
+Sans ouvrir une IA, réponds aux questions suivantes par écrit (dans un doc, une note, ou simplement en tête) :
+
+### 1. Quel est le problème exact résolu ?
+En une phrase, décris ce que cette app résout comme problème concret.
+
+### 2. Qui l'utilise ?
+Décris l'utilisateur. Est-ce que plusieurs personnes peuvent l'utiliser, ou juste toi ?
+
+### 3. Liste les fonctionnalités du MVP
+Ne mets que ce qui est strictement nécessaire. Formule chaque fonctionnalité comme une **action** que l'utilisateur peut faire.
+
+### 4. Liste les écrans
+Quels écrans existent dans l'app ? Que voit-on sur chacun ?
+
+### 5. Qu'est-ce qui est hors scope ?
+Que serais-tu tenté d'ajouter, mais que tu décides de ne **pas** inclure dans le MVP ?
+
+---
+
+## Comment faire
+
+Prends 10 minutes pour répondre à ces 5 questions par écrit. Ensuite, consulte le corrigé et compare.
+
+---corrige---
+
+## Corrigé
+
+Voici un exemple de réponse solide pour cet exercice.
+
+---
+
+### 1. Le problème résolu
+
+> Je perds le fil de mes lectures : je ne me souviens plus quels livres j'ai lus, ce que j'en ai pensé, ni ce que je voulais lire ensuite.
+
+### 2. L'utilisateur
+
+Usage personnel uniquement — pas de comptes multiples, pas de partage. Une seule personne utilise l'app.
+
+### 3. Fonctionnalités MVP
+
+- Ajouter un livre avec titre, auteur, et statut (à lire / en cours / terminé)
+- Voir la liste de tous les livres, filtrée par statut
+- Modifier le statut d'un livre
+- Ajouter une note/avis (texte libre) sur un livre terminé
+- Supprimer un livre
+
+### 4. Les écrans
+
+**Écran principal — Ma bibliothèque**
+Liste de tous les livres avec onglets : "À lire", "En cours", "Terminés". Chaque item affiche titre + auteur + statut.
+
+**Formulaire d'ajout**
+Champs : titre (obligatoire), auteur (obligatoire), statut (liste déroulante). Bouton "Ajouter".
+
+**Détail d'un livre**
+Affiche les infos du livre. Si statut = terminé, champ texte pour l'avis. Bouton "Modifier le statut". Bouton "Supprimer".
+
+### 5. Hors scope MVP
+
+- Notation par étoiles
+- Couvertures de livres (API externe)
+- Recommandations
+- Partage avec d'autres utilisateurs
+- Import depuis Goodreads
+- Statistiques de lecture
+
+---
+
+## Ce que ce travail t'apporte
+
+Quand tu vas maintenant ouvrir ton IA avec cette liste, ton prompt sera précis, structuré et complet. L'IA ne va pas inventer des fonctionnalités que tu ne veux pas.
+
+Ce document de 20 lignes, c'est la différence entre une session de vibecoding fluide et une session où tu passes 2 heures à corriger des malentendus.

@@ -1,0 +1,94 @@
+---
+title: "Écrire ton premier prompt"
+description: "Transforme une idée vague en prompt actionnable pour construire une app simple."
+order: 1
+level: "débutant"
+---
+
+## Objectif
+
+Tu vas écrire un prompt complet pour demander à une IA de construire une application simple — en appliquant les principes du module 4.
+
+---
+
+## Contexte
+
+Tu veux construire une **app de liste de tâches** (todo list). Classique, mais parfait pour s'entraîner.
+
+L'app doit permettre de :
+- Ajouter une tâche avec un titre
+- Cocher une tâche comme terminée
+- Supprimer une tâche
+
+---
+
+## Ce qu'on te demande
+
+Écris un prompt complet que tu enverrais à Claude ou ChatGPT pour construire cette app.
+
+Ton prompt doit inclure :
+1. La stack technique (utilise : Next.js, Tailwind CSS)
+2. La liste précise des fonctionnalités
+3. Le comportement attendu pour chaque action
+4. Une instruction sur par quoi commencer
+
+Ne demande pas tout d'un coup — indique à l'IA de commencer par la structure et le composant principal, sans la base de données pour l'instant (stockage en mémoire locale suffit).
+
+---
+
+## Comment faire
+
+1. Ouvre Claude.ai, ChatGPT ou l'IA de ton choix
+2. Rédige ton prompt en t'aidant du cadre du module 4
+3. Envoie-le et observe le résultat
+4. Reviens ici consulter le corrigé
+
+---corrige---
+
+## Corrigé : un exemple de bon prompt
+
+Voici un prompt de qualité pour cet exercice. Le tien n'a pas besoin d'être identique — ce qui compte, c'est qu'il soit précis, contextualisé et structuré.
+
+---
+
+```
+Je veux construire une app web de liste de tâches (todo list).
+
+Stack : Next.js (App Router), Tailwind CSS. Pas de base de données —
+les tâches sont stockées dans le state React (elles disparaissent au rechargement, c'est ok pour l'instant).
+
+Fonctionnalités :
+1. Afficher la liste des tâches existantes
+2. Ajouter une nouvelle tâche via un champ texte + bouton "Ajouter" (ou touche Entrée)
+3. Cocher/décocher une tâche comme terminée (la tâche apparaît barrée quand elle est cochée)
+4. Supprimer une tâche avec un bouton "×" à droite de chaque item
+
+Comportement attendu :
+- Le champ texte se vide après l'ajout
+- On ne peut pas ajouter une tâche vide
+- Les tâches terminées restent visibles dans la liste (pas de filtre pour l'instant)
+
+Commence par créer un seul composant React `TodoApp` dans `src/components/TodoApp.tsx`
+qui gère tout avec useState. Intègre-le ensuite dans `src/app/page.tsx`.
+Ne génère pas encore de fichiers supplémentaires.
+```
+
+---
+
+## Pourquoi ce prompt est bon
+
+**Il donne la stack clairement** — Next.js, Tailwind, pas de BDD. L'IA ne va pas inventer une solution avec Prisma et PostgreSQL.
+
+**Il décompose les fonctionnalités en actions précises** — pas "gérer les tâches", mais "ajouter", "cocher", "supprimer" avec le comportement attendu pour chacune.
+
+**Il précise les cas limites** — champ vide interdit, champ qui se vide après ajout, tâches terminées restent visibles.
+
+**Il dit par où commencer** — un seul composant, pas une architecture complète d'un coup.
+
+## Ce qu'il ne faut pas écrire
+
+❌ *"Crée-moi une todo list en Next.js"* — trop vague, l'IA va faire des choix arbitraires.
+
+❌ *"Fais une app complète avec base de données, catégories, priorités, rappels et mode hors-ligne"* — trop large, ça va partir dans tous les sens.
+
+❌ *"Tu es un expert Next.js de 10 ans d'expérience, crée..."* — le rôle flatteur ne change rien à la qualité du résultat. Concentre-toi sur la précision.

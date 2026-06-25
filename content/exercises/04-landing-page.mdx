@@ -1,0 +1,128 @@
+---
+title: "Builder une landing page de A à Z"
+description: "Un projet complet guidé : du brief au déploiement, en passant par les prompts et les itérations."
+order: 4
+level: "intermédiaire"
+---
+
+## Objectif
+
+Construire une landing page complète en utilisant le vibecoding — du brief initial jusqu'au résultat final testé dans le navigateur.
+
+---
+
+## Le brief
+
+Tu construis la landing page d'un produit fictif : **Focusly**, une app de gestion du temps pour freelances.
+
+**La page doit contenir :**
+- Un header avec le logo (texte) et un bouton CTA "Essayer gratuitement"
+- Une section hero : accroche principale + sous-titre + bouton CTA
+- Une section "3 fonctionnalités clés" avec icône, titre et description pour chacune
+- Une section témoignages : 2 avis clients avec nom et photo placeholder
+- Un footer simple avec copyright
+
+**Stack :** Next.js, Tailwind CSS. Tout dans une seule page `src/app/page.tsx`.
+
+---
+
+## Les étapes
+
+Cet exercice est guidé — suis les étapes dans l'ordre.
+
+### Étape 1 : Le premier prompt
+
+Rédige et envoie un premier prompt pour obtenir la **structure HTML/JSX** de la page — sans style pour l'instant. L'objectif est de valider l'architecture avant d'aller plus loin.
+
+### Étape 2 : Valide la structure
+
+Lis le code généré. Est-ce que toutes les sections sont là ? Est-ce que la hiérarchie a du sens ? Corrige si nécessaire avant de passer au style.
+
+### Étape 3 : Applique le style
+
+Envoie un deuxième prompt pour ajouter le style Tailwind. Précise l'ambiance visuelle que tu veux : sobre, moderne, fond blanc, accents violets.
+
+### Étape 4 : Teste dans le navigateur
+
+Lance `npm run dev` et ouvre la page. Vérifie chaque section visuellement. Note ce qui ne va pas.
+
+### Étape 5 : Itère
+
+Pour chaque problème identifié à l'étape 4, envoie un prompt ciblé pour le corriger. Un problème = un prompt.
+
+---
+
+## Critères de réussite
+
+- La page s'affiche sans erreur
+- Les 5 sections sont présentes et lisibles
+- La page est responsive (vérifie en rétrécissant la fenêtre)
+- Le bouton CTA est visible et distinct
+
+---corrige---
+
+## Corrigé
+
+Voici les prompts qui fonctionnent bien pour chaque étape.
+
+---
+
+### Prompt étape 1 — Structure
+
+```
+Je construis une landing page pour Focusly, une app de gestion du temps pour freelances.
+Stack : Next.js (App Router), Tailwind CSS. Tout dans src/app/page.tsx.
+
+Structure de la page (dans l'ordre) :
+1. Header : logo "Focusly" à gauche, bouton "Essayer gratuitement" à droite
+2. Hero : titre accrocheur, sous-titre (1-2 phrases), bouton CTA principal
+3. Section features : titre "Pourquoi Focusly ?", 3 cartes (icône emoji + titre + description)
+   - Suivi du temps en un clic
+   - Rapports hebdomadaires automatiques
+   - Intégration avec vos outils (Notion, Slack, Google Calendar)
+4. Section témoignages : titre "Ils nous font confiance", 2 cartes avec citation + nom + rôle
+5. Footer : copyright "© 2025 Focusly"
+
+Génère la structure JSX complète avec des classes Tailwind basiques (pas encore de design poussé).
+Utilise des composants inline, tout dans page.tsx.
+```
+
+---
+
+### Prompt étape 3 — Style
+
+```
+La structure est en place. Améliore le style Tailwind pour que la page soit propre et moderne :
+
+- Fond blanc général
+- Accent couleur : violet (indigo-600 de Tailwind)
+- Header : fond blanc, sticky en haut, bordure subtile en bas
+- Hero : centré, grand titre (text-5xl), beaucoup d'espace vertical (py-24)
+- Bouton CTA principal : fond indigo-600, texte blanc, arrondi, hover effet
+- Section features : fond zinc-50, 3 colonnes sur desktop, 1 colonne sur mobile
+- Témoignages : fond blanc, bordures subtiles, avatar rond placeholder gris
+- Footer : texte centré, gris clair
+
+Responsive : mobile-first. Les 3 colonnes features passent en 1 colonne sur mobile.
+```
+
+---
+
+### Exemple de prompt de correction ciblé (étape 5)
+
+```
+Le header n'est pas sticky — il disparaît quand je scroll.
+Ajoute `sticky top-0 z-50` sur le header et assure-toi qu'il a un fond blanc
+pour ne pas être transparent sur le contenu en dessous.
+Ne touche à rien d'autre.
+```
+
+---
+
+### Ce qu'on apprend dans cet exercice
+
+**Séparer structure et style.** Valider la structure d'abord évite de passer du temps à styler une architecture incorrecte.
+
+**Un prompt par correction.** Chaque problème identifié mérite un prompt dédié, pas un mega-prompt "corrige tout ça".
+
+**Tester visuellement à chaque étape.** Le code peut être "correct" et quand même mal s'afficher. Tes yeux sont ton meilleur outil de validation.
