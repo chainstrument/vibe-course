@@ -27,13 +27,13 @@ export default async function ModulePage({ params }: Props) {
     <div className="mx-auto max-w-3xl px-6 py-16">
       <Link
         href="/modules"
-        className="text-sm text-zinc-400 hover:text-zinc-600 transition-colors mb-8 inline-block"
+        className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-8 inline-block"
       >
         ← Tous les modules
       </Link>
-      <h1 className="text-3xl font-bold text-zinc-900 mb-3">{data.meta.title}</h1>
+      <h1 className="text-3xl font-bold text-white mb-3">{data.meta.title}</h1>
       {data.meta.description && (
-        <p className="text-zinc-500 mb-10">{data.meta.description}</p>
+        <p className="text-zinc-400 mb-10">{data.meta.description}</p>
       )}
       <MDXContent source={data.source} />
     </div>

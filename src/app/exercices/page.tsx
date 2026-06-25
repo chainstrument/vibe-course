@@ -6,9 +6,9 @@ export const metadata = {
 };
 
 const levelColors: Record<string, string> = {
-  débutant: "bg-green-100 text-green-700",
-  intermédiaire: "bg-yellow-100 text-yellow-700",
-  avancé: "bg-red-100 text-red-700",
+  débutant: "bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-500/25",
+  intermédiaire: "bg-amber-500/15 text-amber-400 ring-1 ring-amber-500/25",
+  avancé: "bg-red-500/15 text-red-400 ring-1 ring-red-500/25",
 };
 
 export default function ExercicesPage() {
@@ -16,23 +16,23 @@ export default function ExercicesPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-16">
-      <h1 className="text-3xl font-bold text-zinc-900 mb-2">Exercices pratiques</h1>
-      <p className="text-zinc-500 mb-12">
+      <h1 className="text-3xl font-bold text-white mb-2">Exercices pratiques</h1>
+      <p className="text-zinc-400 mb-12">
         Mets en pratique ce que tu as appris avec l'IA de ton choix.
       </p>
 
       {exercises.length === 0 ? (
-        <p className="text-zinc-400 italic">Les exercices arrivent bientôt.</p>
+        <p className="text-zinc-500 italic">Les exercices arrivent bientôt.</p>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           {exercises.map((ex) => (
             <Link
               key={ex.slug}
               href={`/exercices/${ex.slug}`}
-              className="group flex items-start justify-between gap-4 rounded-xl border border-zinc-100 bg-zinc-50 p-6 hover:border-indigo-200 hover:bg-indigo-50 transition-colors"
+              className="group flex items-start justify-between gap-4 rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.08] hover:border-indigo-500/30 transition-all"
             >
               <div>
-                <h2 className="font-semibold text-zinc-900 group-hover:text-indigo-700 transition-colors">
+                <h2 className="font-semibold text-zinc-100 group-hover:text-white transition-colors">
                   {ex.title}
                 </h2>
                 {ex.description && (
@@ -40,9 +40,7 @@ export default function ExercicesPage() {
                 )}
               </div>
               {ex.level && (
-                <span
-                  className={`flex-none text-xs font-medium px-2.5 py-1 rounded-full ${levelColors[ex.level] ?? "bg-zinc-100 text-zinc-600"}`}
-                >
+                <span className={`flex-none text-xs font-medium px-2.5 py-1 rounded-full ${levelColors[ex.level] ?? "bg-zinc-800 text-zinc-400"}`}>
                   {ex.level}
                 </span>
               )}
