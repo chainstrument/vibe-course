@@ -16,9 +16,9 @@ interface Props {
 }
 
 const levelColors: Record<string, string> = {
-  débutant: "bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-500/25",
-  intermédiaire: "bg-amber-500/15 text-amber-400 ring-1 ring-amber-500/25",
-  avancé: "bg-red-500/15 text-red-400 ring-1 ring-red-500/25",
+  débutant: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400 dark:ring-1 dark:ring-emerald-500/25",
+  intermédiaire: "bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-400 dark:ring-1 dark:ring-amber-500/25",
+  avancé: "bg-red-100 text-red-700 dark:bg-red-500/15 dark:text-red-400 dark:ring-1 dark:ring-red-500/25",
 };
 
 export async function generateStaticParams() {
@@ -54,9 +54,9 @@ export default async function ExercicePage({ params }: Props) {
       />
 
       <div className="flex items-start justify-between gap-4 mb-3">
-        <h1 className="text-3xl font-bold text-white">{data.meta.title}</h1>
+        <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">{data.meta.title}</h1>
         {data.meta.level && (
-          <span className={`flex-none text-xs font-medium px-2.5 py-1 rounded-full mt-1 ${levelColors[data.meta.level] ?? "bg-zinc-800 text-zinc-400"}`}>
+          <span className={`flex-none text-xs font-medium px-2.5 py-1 rounded-full mt-1 ${levelColors[data.meta.level] ?? "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"}`}>
             {data.meta.level}
           </span>
         )}
@@ -65,7 +65,7 @@ export default async function ExercicePage({ params }: Props) {
       <div className="flex items-center justify-between gap-4 mb-10">
         <div className="flex items-center gap-3 text-sm text-zinc-500">
           {data.meta.description && <span>{data.meta.description}</span>}
-          <span className="text-zinc-700">·</span>
+          <span className="text-zinc-300 dark:text-zinc-700">·</span>
           <span>{time}</span>
         </div>
         <ShareButton title={data.meta.title} url={pageUrl} />
@@ -79,7 +79,7 @@ export default async function ExercicePage({ params }: Props) {
         </RevealSolution>
       )}
 
-      <div className="mt-10 pt-8 border-t border-white/10">
+      <div className="mt-10 pt-8 border-t border-zinc-200 dark:border-white/10">
         <ProgressCheckbox type="exercises" slug={slug} label="Marquer comme fait" />
       </div>
       <PrevNext prev={prev} next={next} basePath="/exercices" />

@@ -19,14 +19,14 @@ export default function ProgressCheckbox({ type, slug, label }: Props) {
     <button
       onClick={() => toggle(type, slug)}
       className={`flex items-center gap-2.5 text-sm font-medium transition-colors ${
-        done ? "text-emerald-400" : "text-zinc-500 hover:text-zinc-300"
+        done ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300"
       }`}
     >
       <span
         className={`flex h-5 w-5 items-center justify-center rounded border transition-all ${
           done
-            ? "border-emerald-500 bg-emerald-500/20 text-emerald-400"
-            : "border-zinc-700 bg-transparent"
+            ? "border-emerald-500 bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400"
+            : "border-zinc-300 bg-transparent dark:border-zinc-700"
         }`}
       >
         {done && (

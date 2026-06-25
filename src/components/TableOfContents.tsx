@@ -53,7 +53,7 @@ export default function TableOfContents({ source }: Props) {
 
   return (
     <nav className="hidden xl:block sticky top-24 self-start w-52 shrink-0">
-      <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">
+      <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 dark:text-zinc-500">
         Sur cette page
       </p>
       <ul className="space-y-1.5">
@@ -63,8 +63,8 @@ export default function TableOfContents({ source }: Props) {
               href={`#${id}`}
               className={`block text-sm transition-colors leading-snug ${
                 activeId === id
-                  ? "text-indigo-400"
-                  : "text-zinc-500 hover:text-zinc-300"
+                  ? "text-indigo-600 dark:text-indigo-400"
+                  : "text-zinc-400 hover:text-zinc-700 dark:text-zinc-500 dark:hover:text-zinc-300"
               }`}
             >
               {text}

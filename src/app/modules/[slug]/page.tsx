@@ -47,17 +47,17 @@ export default async function ModulePage({ params }: Props) {
             { label: data.meta.title },
           ]}
         />
-        <h1 className="text-3xl font-bold text-white mb-3">{data.meta.title}</h1>
+        <h1 className="text-3xl font-bold text-zinc-900 dark:text-white mb-3">{data.meta.title}</h1>
         <div className="flex items-center justify-between gap-4 mb-10">
           <div className="flex items-center gap-3 text-sm text-zinc-500">
             {data.meta.description && <span>{data.meta.description}</span>}
-            <span className="text-zinc-700">·</span>
+            <span className="text-zinc-300 dark:text-zinc-700">·</span>
             <span>{time}</span>
           </div>
           <ShareButton title={data.meta.title} url={pageUrl} />
         </div>
         <MDXContent source={data.source} />
-        <div className="mt-10 pt-8 border-t border-white/10">
+        <div className="mt-10 pt-8 border-t border-zinc-200 dark:border-white/10">
           <ProgressCheckbox type="modules" slug={slug} />
         </div>
         <PrevNext prev={prev} next={next} basePath="/modules" />

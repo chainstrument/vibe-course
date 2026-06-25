@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh label *)",
+      "Bash(git -C /home/cloukili/labs/vibe-course add content/modules/ src/components/ src/app/modules/ src/app/exercices/ package.json package-lock.json)",
+      "Bash(git -C /home/cloukili/labs/vibe-course commit -m ' *)",
+      "Bash(git -C /home/cloukili/labs/vibe-course push origin main)",
+      "Bash(git -C /home/cloukili/labs/vibe-course add src/app/layout.tsx src/app/og.png/ src/app/sitemap.ts src/app/robots.ts)",
+      "Bash(git -C /home/cloukili/labs/vibe-course add src/)",
+      "Bash(npm run *)"
+    ]
+  }
+}

@@ -11,22 +11,22 @@ export default function AProposPage() {
     <div className="mx-auto max-w-2xl px-6 py-20">
       {/* Header */}
       <div className="mb-16">
-        <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-4">
+        <p className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-4">
           Manifeste
         </p>
-        <h1 className="text-4xl font-bold text-white leading-tight mb-6">
+        <h1 className="text-4xl font-bold text-zinc-900 dark:text-white leading-tight mb-6">
           Pourquoi Vibe Course existe
         </h1>
-        <p className="text-zinc-400 text-lg leading-relaxed">
+        <p className="text-zinc-500 dark:text-zinc-400 text-lg leading-relaxed">
           Une plateforme d'apprentissage du vibecoding. Pas pour apprendre à coder —
-          pour apprendre à <em className="text-zinc-200 not-italic font-medium">builder</em>.
+          pour apprendre à <em className="text-zinc-700 dark:text-zinc-200 not-italic font-medium">builder</em>.
         </p>
       </div>
 
       {/* Manifeste */}
-      <div className="space-y-12 text-zinc-300 leading-relaxed">
+      <div className="space-y-12 text-zinc-600 dark:text-zinc-300 leading-relaxed">
         <section>
-          <h2 className="text-xl font-semibold text-white mb-4">Le contexte</h2>
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-white mb-4">Le contexte</h2>
           <p>
             Pendant des décennies, construire un logiciel nécessitait des années d'apprentissage.
             Python, JavaScript, SQL, les frameworks, les outils, les conventions — une montagne
@@ -40,7 +40,7 @@ export default function AProposPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-4">Ce qui a changé</h2>
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-white mb-4">Ce qui a changé</h2>
           <p>
             Les modèles de langage ont atteint un niveau où ils peuvent générer du code
             fonctionnel, corriger des bugs, expliquer des concepts techniques et construire
@@ -52,13 +52,13 @@ export default function AProposPage() {
             la nécessité de savoir coder pour exécuter ces idées.
           </p>
           <p className="mt-4">
-            C'est ce qu'Andrej Karpathy a appelé le <strong className="text-white">vibecoding</strong> en 2025 :
+            C'est ce qu'Andrej Karpathy a appelé le <strong className="text-zinc-900 dark:text-white">vibecoding</strong> en 2025 :
             construire en collaborant avec l'IA, en faisant confiance au processus, en itérant.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-4">Ce qu'on croit</h2>
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-white mb-4">Ce qu'on croit</h2>
           <div className="space-y-4">
             {[
               "Builder est une compétence. Coder en est une autre. Les deux ne sont pas liées.",
@@ -76,7 +76,7 @@ export default function AProposPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-4">Ce que Vibe Course n'est pas</h2>
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-white mb-4">Ce que Vibe Course n'est pas</h2>
           <p>
             Ce n'est pas un outil no-code avec des blocs à glisser-déposer. Ce n'est pas
             un générateur automatique d'applications. Ce n'est pas une promesse que tu
@@ -90,7 +90,7 @@ export default function AProposPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-4">Comment c'est construit</h2>
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-white mb-4">Comment c'est construit</h2>
           <p>
             Vibe Course est elle-même un exemple de vibecoding. Elle a été construite
             avec Next.js, Tailwind CSS et Claude Code — sans équipe, sans infrastructure
@@ -103,14 +103,14 @@ export default function AProposPage() {
       </div>
 
       {/* CTA */}
-      <div className="mt-16 pt-10 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <div className="mt-16 pt-10 border-t border-zinc-200 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <Link
           href="/modules"
           className="rounded-lg bg-gradient-to-r from-indigo-500 to-violet-600 px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-all"
         >
           Commencer les modules →
         </Link>
-        <Link href="/exercices" className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors">
+        <Link href="/exercices" className="text-sm text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">
           Voir les exercices
         </Link>
       </div>
