@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { getContent, getModules } from "@/lib/content";
 import MDXContent from "@/components/MDXContent";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import PrevNext from "@/components/PrevNext";
+import TableOfContents from "@/components/TableOfContents";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,19 +25,28 @@ export default async function ModulePage({ params }: Props) {
   const data = getContent("modules", slug);
   if (!data) notFound();
 
+  const modules = getModules();
+  const idx = modules.findIndex((m) => m.slug === slug);
+  const prev = idx > 0 ? modules[idx - 1] : null;
+  const next = idx < modules.length - 1 ? modules[idx + 1] : null;
+
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <Link
-        href="/modules"
-        className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-8 inline-block"
-      >
-        ← Tous les modules
-      </Link>
-      <h1 className="text-3xl font-bold text-white mb-3">{data.meta.title}</h1>
-      {data.meta.description && (
-        <p className="text-zinc-400 mb-10">{data.meta.description}</p>
-      )}
-      <MDXContent source={data.source} />
+    <div className="mx-auto max-w-4xl px-6 py-16 flex gap-16 items-start">
+      <div className="flex-1 min-w-0">
+        <Breadcrumbs
+          crumbs={[
+            { label: "Modules", href: "/modules" },
+            { label: data.meta.title },
+          ]}
+        />
+        <h1 className="text-3xl font-bold text-white mb-3">{data.meta.title}</h1>
+        {data.meta.description && (
+          <p className="text-zinc-400 mb-10">{data.meta.description}</p>
+        )}
+        <MDXContent source={data.source} />
+        <PrevNext prev={prev} next={next} basePath="/modules" />
+      </div>
+      <TableOfContents source={data.source} />
     </div>
   );
 }

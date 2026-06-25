@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getExercise, getExercises } from "@/lib/content";
 import MDXContent from "@/components/MDXContent";
 import RevealSolution from "@/components/RevealSolution";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import PrevNext from "@/components/PrevNext";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -31,14 +32,19 @@ export default async function ExercicePage({ params }: Props) {
   const data = getExercise(slug);
   if (!data) notFound();
 
+  const exercises = getExercises();
+  const idx = exercises.findIndex((e) => e.slug === slug);
+  const prev = idx > 0 ? exercises[idx - 1] : null;
+  const next = idx < exercises.length - 1 ? exercises[idx + 1] : null;
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <Link
-        href="/exercices"
-        className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-8 inline-block"
-      >
-        ← Tous les exercices
-      </Link>
+      <Breadcrumbs
+        crumbs={[
+          { label: "Exercices", href: "/exercices" },
+          { label: data.meta.title },
+        ]}
+      />
 
       <div className="flex items-start justify-between gap-4 mb-3">
         <h1 className="text-3xl font-bold text-white">{data.meta.title}</h1>
@@ -60,6 +66,8 @@ export default async function ExercicePage({ params }: Props) {
           <MDXRemote source={data.solution} />
         </RevealSolution>
       )}
+
+      <PrevNext prev={prev} next={next} basePath="/exercices" />
     </div>
   );
 }
