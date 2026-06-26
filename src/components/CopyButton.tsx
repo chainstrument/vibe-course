@@ -21,7 +21,7 @@ export default function CopyButton({ code }: Props) {
       className={`absolute right-3 top-3 flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
         copied
           ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400"
-          : "bg-zinc-200 text-zinc-500 hover:bg-zinc-300 hover:text-zinc-700 dark:bg-white/10 dark:text-zinc-400 dark:hover:bg-white/15 dark:hover:text-zinc-200"
+          : "bg-stone-200 text-stone-500 hover:bg-stone-300 hover:text-stone-700 dark:bg-white/10 dark:text-zinc-400 dark:hover:bg-white/15 dark:hover:text-zinc-200"
       }`}
     >
       {copied ? (

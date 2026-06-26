@@ -36,7 +36,7 @@ export default function ShareButton({ title, url }: Props) {
         className={`flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition-all ${
           copied
             ? "border-emerald-300 bg-emerald-50 text-emerald-600 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400"
-            : "border-zinc-200 bg-zinc-50 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-200"
+            : "border-stone-200 bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-200"
         }`}
       >
         <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none">

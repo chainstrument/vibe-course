@@ -200,7 +200,7 @@ export default function HeroAnimation() {
           {/* Texte fantôme : réserve la hauteur dès le début */}
           <span className="invisible" aria-hidden>Apprends à builder</span>
           <span
-            className="absolute inset-0 flex justify-center bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-transparent dark:from-white dark:to-zinc-400"
+            className="absolute inset-0 flex justify-center bg-gradient-to-b from-stone-900 to-stone-500 bg-clip-text text-transparent dark:from-white dark:to-zinc-400"
             style={{ clipPath: line1Clip, WebkitClipPath: line1Clip, willChange: "clip-path" }}
           >
             Apprends à builder
@@ -211,7 +211,7 @@ export default function HeroAnimation() {
         <span className="relative block mt-1">
           <span className="invisible" aria-hidden>avec l'IA</span>
           <span
-            className="absolute inset-0 flex justify-center bg-gradient-to-b from-zinc-900 to-zinc-500 bg-clip-text text-transparent dark:from-white dark:to-zinc-400"
+            className="absolute inset-0 flex justify-center bg-gradient-to-b from-stone-900 to-stone-500 bg-clip-text text-transparent dark:from-white dark:to-zinc-400"
             style={{ clipPath: line2Clip, WebkitClipPath: line2Clip, willChange: "clip-path" }}
           >
             avec l'IA
@@ -224,7 +224,7 @@ export default function HeroAnimation() {
         initial={{ opacity: 0, y: 14 }}
         animate={phase === "done" ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.65, ease: "easeOut" }}
-        className="mt-6 text-lg text-zinc-500 max-w-2xl mx-auto leading-relaxed text-center dark:text-zinc-400"
+        className="mt-6 text-lg text-stone-500 max-w-2xl mx-auto leading-relaxed text-center dark:text-zinc-400"
       >
         Le vibecoding a ouvert le développement logiciel à tout le monde.
         Cette plateforme t'apprend à construire l'application que tu veux —

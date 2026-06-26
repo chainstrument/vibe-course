@@ -11,16 +11,16 @@ interface Props {
 
 export default function Breadcrumbs({ crumbs }: Props) {
   return (
-    <nav className="flex items-center gap-2 text-sm text-zinc-400 mb-8 dark:text-zinc-500">
+    <nav className="flex items-center gap-2 text-sm text-stone-400 mb-8 dark:text-zinc-500">
       {crumbs.map((crumb, i) => (
         <span key={i} className="flex items-center gap-2">
-          {i > 0 && <span className="text-zinc-300 dark:text-zinc-700">/</span>}
+          {i > 0 && <span className="text-stone-300 dark:text-zinc-700">/</span>}
           {crumb.href ? (
-            <Link href={crumb.href} className="hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">
+            <Link href={crumb.href} className="hover:text-stone-700 dark:hover:text-zinc-300 transition-colors">
               {crumb.label}
             </Link>
           ) : (
-            <span className="text-zinc-700 dark:text-zinc-300">{crumb.label}</span>
+            <span className="text-stone-700 dark:text-zinc-300">{crumb.label}</span>
           )}
         </span>
       ))}
